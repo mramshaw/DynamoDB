@@ -18,7 +18,7 @@ The contents are as follows:
     * [Tracking Your Free Tier Usage](#tracking-your-free-tier-usage)
     * [AWS Billing and Cost Management](#aws-billing-and-cost-management)
     * [Billing alarm](#billing-alarm)
-    * [DynamoDB](#dynamodb)
+    * [Local usage](#local-usage)
 * [To Do](#to-do)
 
 ## Motivation
@@ -100,9 +100,9 @@ Billing alarm: http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/mon
 
 > You must be signed in using AWS account root user credentials; IAM users cannot enable billing alerts for your AWS account.
 
-#### DynamoDB
+#### Local usage
 
-Usage notes: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.UsageNotes.html
+Local usage notes: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.UsageNotes.html
 
 ## To Do
 
