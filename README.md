@@ -5,7 +5,25 @@
 Having previously used AWS DynamoDB for [Alexa](http://github.com/mramshaw/Alexa-Stuff/tree/master/DynamoDB),
 it seemed to be time to investigate DynamoDB as a NoSQL database in its own right.
 
-Specifically, I will be examining it for use in ___serverless architectures___ as a replacement for MongoDB.
+## Contents
+
+The contents are as follows:
+
+* [Motivation](#motivation)
+* [Performance](#performance)
+* [Offline use](#offline-use)
+    * [Docker Tags](#docker-tags)
+* [Security](#security)
+* [Reference](#reference)
+    * [Tracking Your Free Tier Usage](#tracking-your-free-tier-usage)
+    * [AWS Billing and Cost Management](#aws-billing-and-cost-management)
+    * [Billing alarm](#billing-alarm)
+    * [DynamoDB](#dynamodb)
+* [To Do](#to-do)
+
+## Motivation
+
+Specifically, I will be examining DynamoDB for use in ___serverless architectures___ as a replacement for MongoDB.
 
 ## Performance
 
@@ -26,7 +44,7 @@ $ docker run -p 8000:8000 amazon/dynamodb-local
 
 Usage notes: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.UsageNotes.html
 
-#### Tags
+#### Docker Tags
 
 You can find the Docker tags [here](http://hub.docker.com/r/amazon/dynamodb-local/tags).
 
