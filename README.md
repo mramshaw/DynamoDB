@@ -35,15 +35,16 @@ I will be examining DynamoDB for use in ___serverless architectures___ as a repl
 
 #### DBaaS
 
-Specifically, I will be examining DynamoDB (and alternatives) for __Database as a Service (DBaaS)__ capabilities
-[a principal component of serverless architectures is the ability to outsource the bulk of database operations].
+Specifically, I will be examining DynamoDB (and alternatives) for __Database as a Service (DBaaS)__ capabilities.
+
+[A principal component of serverless architectures is the ability to outsource the bulk of database operations.]
 
 In particular, the ability to scale and maintain NoSQL databases at enterprise levels can involve substantial time
 and costs.
 
 DBaaS is generally a premium cloud offering and can get expensive quickly. Even so, it's still probably far less
 expensive than managing an on-premises database. The choice of database is important as egress charges tend to be
-very expensive.
+prohibitive.
 
 #### Auto-scaling
 
@@ -132,7 +133,9 @@ Probably the best option is to use the [Dockerized version](http://hub.docker.co
 $ docker run -p 8000:8000 amazon/dynamodb-local
 ```
 
-Usage notes: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.UsageNotes.html
+Usage notes:
+
+    http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.UsageNotes.html
 
 #### Docker Tags
 
@@ -178,21 +181,29 @@ As always with the cloud, documentation is voluminous. Some useful links are lis
 
 #### Tracking Your Free Tier Usage
 
-Tracking Your Free Tier Usage: http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/tracking-free-tier-usage.html
+Tracking Your Free Tier Usage:
+
+    http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/tracking-free-tier-usage.html
 
 #### AWS Billing and Cost Management
 
-What Is AWS Billing and Cost Management?: http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html
+What Is AWS Billing and Cost Management?:
+
+    http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html
 
 #### Billing Alarm
 
-Billing alarm: http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/monitor_estimated_charges_with_cloudwatch.html
+Billing alarm:
+
+    http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/monitor_estimated_charges_with_cloudwatch.html
 
 > You must be signed in using AWS account root user credentials; IAM users cannot enable billing alerts for your AWS account.
 
 #### Local usage
 
-Local usage notes: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.UsageNotes.html
+Local usage notes:
+
+    http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.UsageNotes.html
 
 ## To Do
 
