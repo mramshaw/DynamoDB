@@ -13,6 +13,7 @@ The contents are as follows:
     * [DBaaS](#dbaas)
     * [Auto-scaling](#auto-scaling)
     * [Global Tables](#global-tables)
+    * [Ease of use](#ease-of-use)
 * [Alternatives](#alternatives)
     * [AWS](#aws)
     * [Third-Party](#third-party)
@@ -49,6 +50,12 @@ AWS offers [Global Tables](http://aws.amazon.com/dynamodb/global-tables/) for re
 
 [This is a premium service, and may well be overkill for most use cases.]
 
+#### Ease of use
+
+Consistent with usage and query requirements, it should as simple as possible to use and manage.
+
+[DocumentDB is simple to set up and administrate, although the IAM aspects can be tricky.]
+
 ## Alternatives
 
 The following is a quick list of alternatives to DynamoDB.
@@ -65,13 +72,14 @@ UPDATE: Wikipedia has an extrewmely good (if slightly out-of-date) summary of th
 
 #### AWS
 
-Amazon DocumentDB: http://aws.amazon.com/documentdb/
+[Amazon DocumentDB](http://aws.amazon.com/documentdb/)
 
 * Seems to have been designed as a drop-in replacement for MongoDB
 * Apparently runs on Aurora PostgreSQL under the covers
 * Does not support all [MongoDB data types](http://docs.aws.amazon.com/documentdb/latest/developerguide/mongo-apis-data-types.html)
 * Probably overkill for simple use cases
 * Probably not a good choice for greenfield applications
+* Apparently has the same price structure as MongoDB Atlas
 
 #### Third-Party
 
@@ -79,6 +87,13 @@ Amazon DocumentDB: http://aws.amazon.com/documentdb/
 
 * The original
 * Has cloud offerings, but seems to be playing catch-up with AWS and Azure (both of which have competing offerings)
+* Apparently has the same price structure as AWS DocumentDB
+
+[Azure Cosmos DB](http://azure.microsoft.com/en-us/services/cosmos-db/)
+
+* Apparently rebranded from Azure DocumentDB in 2017
+
+[I am largely unfamiliar with Azure so I won't be examining this product.]
 
 [CouchBase](http://www.couchbase.com/)
 
