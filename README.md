@@ -2,8 +2,8 @@
 
 ![AWS DynamoDB](images/Database_AmazonDynamoDB.png)
 
-Having previously used AWS DynamoDB for [Alexa](http://github.com/mramshaw/Alexa-Stuff/tree/master/DynamoDB),
-it seemed to be time to investigate DynamoDB as a NoSQL database in its own right.
+Having used AWS DynamoDB for [Alexa](http://github.com/mramshaw/Alexa-Stuff/tree/master/DynamoDB),
+it was time to investigate DynamoDB as a NoSQL database in its own right.
 
 ## Contents
 
@@ -13,6 +13,7 @@ The contents are as follows:
     * [DBaaS](#dbaas)
     * [Auto-scaling](#auto-scaling)
     * [Global Tables](#global-tables)
+    * [Advanced query capabilities](#advanced-query-capabilities)
     * [Ease of use](#ease-of-use)
 * [Alternatives](#alternatives)
     * [AWS](#aws)
@@ -34,8 +35,8 @@ I will be examining DynamoDB for use in ___serverless architectures___ as a repl
 
 #### DBaaS
 
-Specifically, I will be examing DynamoDB (and alternatives) for __Database as a Service (DBaaS)__ capabilities,
-as a principal component of serverless architectures is the ability to outsource the bulk of database operations.
+Specifically, I will be examining DynamoDB (and alternatives) for __Database as a Service (DBaaS)__ capabilities
+ - as a principal component of serverless architectures is the ability to outsource the bulk of database operations.
 
 In particular, the ability to scale and maintain MongoDB at enterprise levels seems to involve substantial time and
 costs.
@@ -49,6 +50,12 @@ DynamoDB auto-scaling is relatively simple but probably does not extend across A
 AWS offers [Global Tables](http://aws.amazon.com/dynamodb/global-tables/) for replication across regions.
 
 [This is a premium service, and may well be overkill for most use cases.]
+
+#### Advanced query capabilities
+
+To the extent that they are needed, Advanced query capabilities (text search, JSON parsing) are nice to have.
+
+Of course, for more complicated use cases GraphQL is an option, but this is to be avoided if at all possible.
 
 #### Ease of use
 
@@ -64,11 +71,11 @@ Some notes will be listed, otherwise how to evaluate DocumentDB against the alte
 
 [It will be assumed that what is required is a JSON-friendly NoSQL DBaaS that can auto-scale.]
 
-UPDATE: Wikipedia has an extrewmely good (if slightly out-of-date) summary of the alternatives: http://en.wikipedia.org/wiki/DBaaS
+Wikipedia has a good (if slightly out-of-date) summary of the alternatives: http://en.wikipedia.org/wiki/DBaaS
 
 > NoSQL databases are built to service heavy read/write loads and can scale up and down easily
 
-[It makes no mention of either AWS DocumentDB or Azure DocumentDB.]
+[The article makes no mention of either AWS DocumentDB or Azure DocumentDB.]
 
 #### AWS
 
@@ -93,7 +100,7 @@ UPDATE: Wikipedia has an extrewmely good (if slightly out-of-date) summary of th
 
 * Apparently rebranded from Azure DocumentDB in 2017
 
-[I am largely unfamiliar with Azure so I won't be examining this product.]
+[I am unfamiliar with Azure so I won't be examining this product.]
 
 [CouchBase](http://www.couchbase.com/)
 
