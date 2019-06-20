@@ -36,10 +36,14 @@ I will be examining DynamoDB for use in ___serverless architectures___ as a repl
 #### DBaaS
 
 Specifically, I will be examining DynamoDB (and alternatives) for __Database as a Service (DBaaS)__ capabilities
- - as a principal component of serverless architectures is the ability to outsource the bulk of database operations.
+[a principal component of serverless architectures is the ability to outsource the bulk of database operations].
 
-In particular, the ability to scale and maintain MongoDB at enterprise levels seems to involve substantial time and
-costs.
+In particular, the ability to scale and maintain NoSQL databases at enterprise levels can involve substantial time
+and costs.
+
+DBaaS is generally a premium cloud offering and can get expensive quickly. Even so, it's still probably far less
+expensive than managing an on-premises database. The choice of database is important as egress charges tend to be
+very expensive.
 
 #### Auto-scaling
 
