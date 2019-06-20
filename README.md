@@ -11,6 +11,8 @@ The contents are as follows:
 
 * [Motivation](#motivation)
     * [DBaaS](#dbaas)
+    * [Auto-scaling](#auto-scaling)
+    * [Global Tables](#global-tables)
 * [Alternatives](#alternatives)
     * [AWS](#aws)
     * [Third-Party](#third-party)
@@ -27,15 +29,25 @@ The contents are as follows:
 
 ## Motivation
 
-Specifically, I will be examining DynamoDB for use in ___serverless architectures___ as a replacement for MongoDB.
+I will be examining DynamoDB for use in ___serverless architectures___ as a replacement for MongoDB.
 
 #### DBaaS
 
-More specifically, I will be examing DynamoDB (and alternatives) for __Database as a Service__ (DBaaS) capabilities,
+Specifically, I will be examing DynamoDB (and alternatives) for __Database as a Service (DBaaS)__ capabilities,
 as a principal component of serverless architectures is the ability to outsource the bulk of database operations.
 
 In particular, the ability to scale and maintain MongoDB at enterprise levels seems to involve substantial time and
 costs.
+
+#### Auto-scaling
+
+DynamoDB auto-scaling is relatively simple but probably does not extend across AWS regions.
+
+#### Global Tables
+
+AWS offers [Global Tables](http://aws.amazon.com/dynamodb/global-tables/) for replication across regions.
+
+[This is a premium service, and may well be overkill for most use cases.]
 
 ## Alternatives
 
@@ -45,13 +57,19 @@ Some notes will be listed, otherwise how to evaluate DocumentDB against the alte
 
 [It will be assumed that what is required is a JSON-friendly NoSQL DBaaS that can auto-scale.]
 
+UPDATE: Wikipedia has an extrewmely good (if slightly out-of-date) summary of the alternatives: http://en.wikipedia.org/wiki/DBaaS
+
+> NoSQL databases are built to service heavy read/write loads and can scale up and down easily
+
+[It makes no mention of either AWS DocumentDB or Azure DocumentDB.]
+
 #### AWS
 
 Amazon DocumentDB: http://aws.amazon.com/documentdb/
 
 * Seems to have been designed as a drop-in replacement for MongoDB
 * Apparently runs on Aurora PostgreSQL under the covers
-* Does not support all MongoDB data types: https://docs.aws.amazon.com/documentdb/latest/developerguide/mongo-apis-data-types.html
+* Does not support all [MongoDB data types](http://docs.aws.amazon.com/documentdb/latest/developerguide/mongo-apis-data-types.html)
 * Probably overkill for simple use cases
 * Probably not a good choice for greenfield applications
 
@@ -69,7 +87,7 @@ Amazon DocumentDB: http://aws.amazon.com/documentdb/
 * Has its own query language (N1QL)
 * Not really DBaaS
 
-[Check out my [Couchbase repo](https://github.com/mramshaw/RESTful-Couchbase).]
+[Check out my [Couchbase repo](http://github.com/mramshaw/RESTful-Couchbase).]
 
 ## Performance
 
