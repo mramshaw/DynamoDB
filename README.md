@@ -10,6 +10,10 @@ it seemed to be time to investigate DynamoDB as a NoSQL database in its own righ
 The contents are as follows:
 
 * [Motivation](#motivation)
+    * [DBaaS](#dbaas)
+* [Alternatives](#alternatives)
+    * [AWS](#aws)
+    * [Third-Party](#third-party)
 * [Performance](#performance)
 * [Offline use](#offline-use)
     * [Docker Tags](#docker-tags)
@@ -24,6 +28,48 @@ The contents are as follows:
 ## Motivation
 
 Specifically, I will be examining DynamoDB for use in ___serverless architectures___ as a replacement for MongoDB.
+
+#### DBaaS
+
+More specifically, I will be examing DynamoDB (and alternatives) for __Database as a Service__ (DBaaS) capabilities,
+as a principal component of serverless architectures is the ability to outsource the bulk of database operations.
+
+In particular, the ability to scale and maintain MongoDB at enterprise levels seems to involve substantial time and
+costs.
+
+## Alternatives
+
+The following is a quick list of alternatives to DynamoDB.
+
+Some notes will be listed, otherwise how to evaluate DocumentDB against the alternatives?
+
+[It will be assumed that what is required is a JSON-friendly NoSQL DBaaS that can auto-scale.]
+
+#### AWS
+
+Amazon DocumentDB: http://aws.amazon.com/documentdb/
+
+* Seems to have been designed as a drop-in replacement for MongoDB
+* Apparently runs on Aurora PostgreSQL under the covers
+* Does not support all MongoDB data types: https://docs.aws.amazon.com/documentdb/latest/developerguide/mongo-apis-data-types.html
+* Probably overkill for simple use cases
+* Probably not a good choice for greenfield applications
+
+#### Third-Party
+
+[MongoDB](http://www.mongodb.com/)
+
+* The original
+* Has cloud offerings, but seems to be playing catch-up with AWS and Azure (both of which have competing offerings)
+
+[CouchBase](http://www.couchbase.com/)
+
+* Seems to have better scaling and replication options
+* Probably more JSON-friendly than its competitors
+* Has its own query language (N1QL)
+* Not really DBaaS
+
+[Check out my [Couchbase repo](https://github.com/mramshaw/RESTful-Couchbase).]
 
 ## Performance
 
@@ -106,6 +152,7 @@ Local usage notes: http://docs.aws.amazon.com/amazondynamodb/latest/developergui
 
 ## To Do
 
+- [ ] Investigate MongoDB cloud offerings (Atlas, etc)
 - [ ] Investigate offline use
 - [ ] Investigate [AWS Cost Explorer](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ce-enable.html)
 - [ ] Investigate AWS Budgets (budgeting, cost allocation tags, alerts, consolidated billing)
