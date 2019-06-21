@@ -44,8 +44,8 @@ In particular, the ability to scale and maintain NoSQL databases at enterprise l
 and costs.
 
 DBaaS is generally a premium cloud offering and can get expensive quickly. Even so, it's still probably far less
-expensive than managing an on-premises database. The choice of database is important as egress charges tend to be
-prohibitive.
+expensive than managing an on-premises database. The choice of cloud provider is important as egress charges tend
+to be prohibitive (MongoDB Atlas can use any of the major cloud providers).
 
 #### Auto-scaling
 
@@ -217,7 +217,7 @@ Local usage notes:
 ## To Do
 
 - [x] Investigate MongoDB DBaaS offering (Atlas)
-- [x] Investigate MongoDB Atlas free tier
+- [ ] Investigate MongoDB Atlas free tier
 - [ ] Investigate DynamoDB data residency (in terms of regions)
 - [ ] Investigate DynamoDB offline use
 - [ ] Investigate [AWS Cost Explorer](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ce-enable.html)
