@@ -31,7 +31,8 @@ The contents are as follows:
 
 ## Motivation
 
-I will be examining DynamoDB for use in ___serverless architectures___ as a replacement for MongoDB.
+I will be examining DynamoDB for use in ___serverless architectures___ as a replacement for
+[MongoDB](http://www.mongodb.com/).
 
 #### DBaaS
 
@@ -92,13 +93,19 @@ Wikipedia has a good (if slightly out-of-date) summary of the alternatives: http
 * Probably overkill for simple use cases
 * Probably not a good choice for greenfield applications
 * Apparently has the same price structure as MongoDB Atlas
+* Requires a VPC (additional costs & doesn't help with Lambda cold starts)
 
 #### Third-Party
 
-[MongoDB](http://www.mongodb.com/)
+[MongoDB Atlas](http://docs.atlas.mongodb.com/getting-started/)
 
-* The original
-* Has cloud offerings, but seems to be playing catch-up with AWS and Azure (both of which have competing offerings)
+* Offers a choice of cloud providers (AWS, Azure, GCP)
+* Seems to offer global clusters which pair well with [GCP's global VPCs](http://cloud.google.com/vpc/)
+* Offers the widest JSON support (including BSON)
+* Uses [JSON query syntax](http://docs.mongodb.com/manual/reference/operator/)
+* Has a free tier which doesn't require a credit card
+* Seems to be playing catch-up with AWS and Azure (both of which have competing offerings)
+* Scaleable, both horizontally and vertically, but does not auto-scale
 * Apparently has the same price structure as AWS DocumentDB
 
 [Azure Cosmos DB](http://azure.microsoft.com/en-us/services/cosmos-db/)
@@ -110,7 +117,7 @@ Wikipedia has a good (if slightly out-of-date) summary of the alternatives: http
 [CouchBase](http://www.couchbase.com/)
 
 * Seems to have better scaling and replication options
-* Probably more JSON-friendly than its competitors
+* Probably more JSON-friendly than its competitors (apart from MongoDB)
 * Has its own query language (N1QL)
 * Not really DBaaS
 
@@ -126,6 +133,8 @@ If performance becomes an issue, it is always possible to add a caching layer wi
 ## Offline use
 
 DynamoDB is available for [local use](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.html).
+
+[This may well be coupled with [LocalStack](http://github.com/localstack/localstack).]
 
 Probably the best option is to use the [Dockerized version](http://hub.docker.com/r/amazon/dynamodb-local):
 
@@ -207,12 +216,14 @@ Local usage notes:
 
 ## To Do
 
-- [ ] Investigate MongoDB cloud offerings (Atlas, etc)
-- [ ] Investigate offline use
+- [x] Investigate MongoDB DBaaS offering (Atlas)
+- [x] Investigate MongoDB Atlas free tier
+- [ ] Investigate DynamoDB data residency (in terms of regions)
+- [ ] Investigate DynamoDB offline use
 - [ ] Investigate [AWS Cost Explorer](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ce-enable.html)
 - [ ] Investigate AWS Budgets (budgeting, cost allocation tags, alerts, consolidated billing)
-- [ ] Investigate billing alerts
-- [ ] Investigate current IAM and RBAC
+- [ ] Investigate AWS billing alerts
+- [ ] Investigate AWS current IAM and RBAC
 - [ ] Verify if the access permissions shown above are still current
-- [ ] Investigate auto-scaling
-- [ ] Investigate [Global Tables](http://aws.amazon.com/dynamodb/global-tables/)
+- [ ] Investigate DynamoDB auto-scaling
+- [ ] Investigate DynamoDB [Global Tables](http://aws.amazon.com/dynamodb/global-tables/)
