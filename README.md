@@ -28,7 +28,7 @@ The contents are as follows:
     * [Web Identity Federation](#web-identity-federation)
 * [Reference](#reference)
     * [Tracking Your Free Tier Usage](#tracking-your-free-tier-usage)
-    * [DynamoDB Accelerator](#dynamoda-accelerator)
+    * [DynamoDB Accelerator](#dynamodb-accelerator)
     * [AWS Billing and Cost Management](#aws-billing-and-cost-management)
     * [Billing alarm](#billing-alarm)
     * [Local usage](#local-usage)
@@ -159,9 +159,9 @@ years) but offers discounts. The capacity to reserve should be based upon the ex
 factor will play into this calculation of course; the higher the capacity reserved, the greater the
 cost savings.
 
-[Costs can be expected to decrease, so apparently the one year option is the term to choose.]
-
 ![Reserved Capacity](images/Reserved_Capacity.png)
+
+[Costs can apparently be expected to continue to go down, so the one year option is the term to choose.]
 
 ## Offline use
 
