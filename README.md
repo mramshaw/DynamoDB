@@ -135,7 +135,7 @@ Wikipedia has a good (if slightly out-of-date) summary of the alternatives: http
 If performance becomes an issue, it is always possible to add a caching layer with
 [Amazon DynamoDB Accelerator (DAX)](http://aws.amazon.com/dynamodb/dax/).
 
-[DAX went GA in Jone, 2017.]
+[DAX went GA in June, 2017.]
 
 ## Costs
 
@@ -154,12 +154,12 @@ DynamoDB has sensible default values. These can be easily modified after the fac
 #### Reserved Capacity
 
 Once production volumes have become established (after a few months running in production perhaps),
-it is possible to reserve DynamoDB capacity. This is a moderately long-term commitment (one to three
+it is possible to reserve DynamoDB capacity. This is a moderately long-term commitment (one or three
 years) but offers discounts. The capacity to reserve should be based upon the expected usage. The cost
 factor will play into this calculation of course; the higher the capacity reserved, the greater the
 cost savings.
 
-[Costs can be expected to decrease, so apparently the one year term is the one to choose.]
+[Costs can be expected to decrease, so apparently the one year option is the term to choose.]
 
 ![Reserved Capacity](images/Reserved_Capacity.png)
 
