@@ -19,11 +19,16 @@ The contents are as follows:
     * [AWS](#aws)
     * [Third-Party](#third-party)
 * [Performance](#performance)
+* [Costs](#costs)
+    * [Capacity](#capacity)
+    * [Reserved Capacity](#reserved-capacity)
 * [Offline use](#offline-use)
     * [Docker Tags](#docker-tags)
 * [Security](#security)
+    * [Web Identity Federation](#web-identity-federation)
 * [Reference](#reference)
     * [Tracking Your Free Tier Usage](#tracking-your-free-tier-usage)
+    * [DynamoDB Accelerator](#dynamoda-accelerator)
     * [AWS Billing and Cost Management](#aws-billing-and-cost-management)
     * [Billing alarm](#billing-alarm)
     * [Local usage](#local-usage)
@@ -130,11 +135,39 @@ Wikipedia has a good (if slightly out-of-date) summary of the alternatives: http
 If performance becomes an issue, it is always possible to add a caching layer with
 [Amazon DynamoDB Accelerator (DAX)](http://aws.amazon.com/dynamodb/dax/).
 
+[DAX went GA in Jone, 2017.]
+
+## Costs
+
+DynamoDB has a handy cost calculator, which is tied to DynamoDB Capacity.
+
+It is accessible via the DynamoDB ___Capacity___ tab.
+
+For more precise estimates, there is the ___Capacity calculator___ (available via a link).
+
+#### Capacity
+
+DynamoDB has sensible default values. These can be easily modified after the fact:
+
+![Capacity](images/Capacity.png)
+
+#### Reserved Capacity
+
+Once production volumes have become established (after a few months running in production perhaps),
+it is possible to reserve DynamoDB capacity. This is a moderately long-term commitment (one to three
+years) but offers discounts. The capacity to reserve should be based upon the expected usage. The cost
+factor will play into this calculation of course; the higher the capacity reserved, the greater the
+cost savings.
+
+[Costs can be expected to decrease, so apparently the one year term is the one to choose.]
+
+![Reserved Capacity](images/Reserved_Capacity.png)
+
 ## Offline use
 
 DynamoDB is available for [local use](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.html).
 
-[This may well be coupled with [LocalStack](http://github.com/localstack/localstack).]
+[This may well be coupled with AWS CloudFormation (which can run locally) or [LocalStack](http://github.com/localstack/localstack).]
 
 Probably the best option is to use the [Dockerized version](http://hub.docker.com/r/amazon/dynamodb-local):
 
@@ -184,6 +217,10 @@ For online use, restrict access as follows:
 	  ]
 	}
 
+#### Web Identity Federation
+
+DynamoDB offers [Web Identity Federation](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WIF.html).
+
 ## Reference
 
 As always with the cloud, documentation is voluminous. Some useful links are listed below.
@@ -193,6 +230,18 @@ As always with the cloud, documentation is voluminous. Some useful links are lis
 Tracking Your Free Tier Usage:
 
     http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/tracking-free-tier-usage.html
+
+#### DynamoDB Accelerator
+
+DAX as a drop-in accelerator for DynamoDB:
+
+    http://www.allthingsdistributed.com/2017/06/amazon-dynamodb-accelerator-dax.html
+
+> With DAX, we've created a fully managed caching service that is API-compatible with DynamoDB.
+
+And:
+
+> With DAX, you get faster reads, more throughput, and cost savings - without having to write any new code.
 
 #### AWS Billing and Cost Management
 
@@ -219,11 +268,14 @@ Local usage notes:
 - [x] Investigate MongoDB DBaaS offering (Atlas)
 - [ ] Investigate MongoDB Atlas free tier
 - [ ] Investigate DynamoDB data residency (in terms of regions)
+- [x] Investigate DynamoDB Capacity, Reserved Capacity, and Cost Calculator
+- [ ] Test DynamoDB Accelerator (DAX)
 - [ ] Investigate DynamoDB offline use
 - [ ] Investigate [AWS Cost Explorer](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ce-enable.html)
 - [ ] Investigate AWS Budgets (budgeting, cost allocation tags, alerts, consolidated billing)
 - [ ] Investigate AWS billing alerts
 - [ ] Investigate AWS current IAM and RBAC
 - [ ] Verify if the access permissions shown above are still current
+- [ ] Investigate [Web Identity Federation](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WIF.html)
 - [ ] Investigate DynamoDB auto-scaling
-- [ ] Investigate DynamoDB [Global Tables](http://aws.amazon.com/dynamodb/global-tables/)
+- [ ] Test DynamoDB [Global Tables](http://aws.amazon.com/dynamodb/global-tables/)
