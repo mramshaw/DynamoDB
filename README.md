@@ -68,6 +68,10 @@ To the extent that they are needed, Advanced query capabilities (text search, JS
 
 Of course, for more complicated use cases GraphQL is an option, but this is to be avoided if at all possible.
 
+There is no clear winner in terms of a query language - MongoDB queries are not particularly intuitive, while
+CouchBase has N1QL (which seems simple enough). Of course, if standard SQL is what is wanted, Amazon Athena
+may well be a very good choice.
+
 #### Ease of use
 
 Consistent with usage and query requirements, it should as simple as possible to use and manage.
@@ -99,6 +103,13 @@ Wikipedia has a good (if slightly out-of-date) summary of the alternatives: http
 * Probably not a good choice for greenfield applications
 * Apparently has the same price structure as MongoDB Atlas
 * Requires a VPC (additional costs & doesn't help with Lambda cold starts)
+
+[Amazon Athena](http://aws.amazon.com/athena/)
+
+* Uses S3 as a backing store
+* Supports CSV, JSON, ORC, Avro, and Parquet
+* Uses standard SQL (so good integration with traditional analysis tools)
+* Based on Facebook Presto
 
 #### Third-Party
 
@@ -270,6 +281,7 @@ Local usage notes:
 - [ ] Investigate DynamoDB data residency (in terms of regions)
 - [x] Investigate DynamoDB Capacity, Reserved Capacity, and Cost Calculator
 - [ ] Test DynamoDB Accelerator (DAX)
+- [ ] Investigate [AWS Athena](http://aws.amazon.com/athena/)
 - [ ] Investigate DynamoDB offline use
 - [ ] Investigate [AWS Cost Explorer](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ce-enable.html)
 - [ ] Investigate AWS Budgets (budgeting, cost allocation tags, alerts, consolidated billing)
