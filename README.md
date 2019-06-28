@@ -68,9 +68,12 @@ To the extent that they are needed, Advanced query capabilities (text search, JS
 
 Of course, for more complicated use cases GraphQL is an option, but this is to be avoided if at all possible.
 
-There is no clear winner in terms of a query language - MongoDB queries are not particularly intuitive, while
-CouchBase has N1QL (which seems simple enough). Of course, if standard SQL is what is wanted, Amazon Athena
-may well be a very good choice.
+There is no clear winner in terms of querying - MongoDB queries are not particularly intuitive, which is
+perhaps why they have [MongoDB Connector for BI](http://www.mongodb.com/products/bi-connector) - which
+allows for standard SQL queries. CouchBase has N1QL (which seems simple enough). And for another standard
+SQL option, there is [Amazon Athena](http://aws.amazon.com/athena/) - which may well be a very good choice
+for a [CQRS](https://en.wikipedia.org/wiki/CQRS)-type solution (for a Google Cloud alternative to Amazon
+Athena there is [BigQuery](https://cloud.google.com/bigquery/)).
 
 #### Ease of use
 
@@ -116,9 +119,12 @@ Wikipedia has a good (if slightly out-of-date) summary of the alternatives: http
 [MongoDB Atlas](http://docs.atlas.mongodb.com/getting-started/)
 
 * Offers a choice of cloud providers (AWS, Azure, GCP)
+* Widest choice of supported programming languages
+* A relatively old and mature offering, so offers good third-party tools
 * Seems to offer global clusters which pair well with [GCP's global VPCs](http://cloud.google.com/vpc/)
 * Offers the widest JSON support (including BSON)
 * Uses [JSON query syntax](http://docs.mongodb.com/manual/reference/operator/)
+* Offers [MongoDB Connector for BI](http://www.mongodb.com/products/bi-connector) which allows for standard SQL queries
 * Has a free tier which doesn't require a credit card
 * Seems to be playing catch-up with AWS and Azure (both of which have competing offerings)
 * Scaleable, both horizontally and vertically, but does not auto-scale
@@ -282,6 +288,7 @@ Local usage notes:
 - [x] Investigate DynamoDB Capacity, Reserved Capacity, and Cost Calculator
 - [ ] Test DynamoDB Accelerator (DAX)
 - [ ] Investigate [AWS Athena](http://aws.amazon.com/athena/)
+- [ ] Investigate [BigQuery](https://cloud.google.com/bigquery/) (Google Cloud alternative to AWS Athena)
 - [ ] Investigate DynamoDB offline use
 - [ ] Investigate [AWS Cost Explorer](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ce-enable.html)
 - [ ] Investigate AWS Budgets (budgeting, cost allocation tags, alerts, consolidated billing)
