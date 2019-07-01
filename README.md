@@ -63,10 +63,6 @@ where initial traffic estimates were quickly exceeded by astronomical demand.
 
 DynamoDB auto-scaling is relatively simple but probably does not extend across AWS regions.
 
-Auto-scaling is not an option if On-demand capacity is selected:
-
-![On-demand options](images/On-demand_Options.png)
-
 #### Global Tables
 
 AWS offers [Global Tables](http://aws.amazon.com/dynamodb/global-tables/) for replication across regions.
@@ -191,9 +187,12 @@ Note the following:
 
 [Switching to On-demand capacity can take 5 minutes or so.]
 
-Changes to On-demand capacity are limited:
+![On-demand capacity](images/On-demand_capacity.png)
 
-![On-demand changes limited](images/On-demand_changes_limited.png)
+__Nota bene__:
+
+* Changes to On-demand capacity are limited
+* Auto-scaling is not an option if On-demand capacity is selected
 
 #### Reserved Capacity
 
