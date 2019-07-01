@@ -266,6 +266,17 @@ What Is AWS Billing and Cost Management?:
 
     http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html
 
+Simple Monthly Calculator:
+
+    http://calculator.s3.amazonaws.com/index.html
+
+[Click the __Amazon DynamoDB__ tab on the colmn on the right-hand side.]
+
+> FREE TIER: Each month, Amazon DynamoDB users pay no charges on the first 25GB of storage,
+> the first 2.5 million DynamoDB Streams read request units, as well as 25 write capacity unit
+> and 25 read capacity units of provisioned capacity. Free tier also provides 25 replicated
+> write capacity units to deploy DynamoDB Global Tables in up to 2 AWS regions.
+
 #### Billing Alarm
 
 Billing alarm:
