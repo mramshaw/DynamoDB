@@ -30,6 +30,7 @@ The contents are as follows:
     * [Tracking Your Free Tier Usage](#tracking-your-free-tier-usage)
     * [DynamoDB Accelerator](#dynamodb-accelerator)
     * [AWS Billing and Cost Management](#aws-billing-and-cost-management)
+    * [AWS Simple Monthly Calculator](#aws-simple-monthly-calculator)
     * [Billing alarm](#billing-alarm)
     * [Local usage](#local-usage)
 * [To Do](#to-do)
@@ -162,6 +163,8 @@ It is accessible via the DynamoDB ___Capacity___ tab.
 
 For more precise estimates, there is the ___Capacity calculator___ (available via a link).
 
+And for the ultimate in precision, there is the [AWS Simple Monthly Calculator](#aws-simple-monthly-calculator).
+
 #### Capacity
 
 DynamoDB has sensible default values. These can be easily modified after the fact:
@@ -266,11 +269,13 @@ What Is AWS Billing and Cost Management?:
 
     http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html
 
+#### AWS Simple Monthly Calculator
+
 Simple Monthly Calculator:
 
     http://calculator.s3.amazonaws.com/index.html
 
-[Click the __Amazon DynamoDB__ tab on the colmn on the right-hand side.]
+[Click the __Amazon DynamoDB__ tab in the column on the right-hand side.]
 
 > FREE TIER: Each month, Amazon DynamoDB users pay no charges on the first 25GB of storage,
 > the first 2.5 million DynamoDB Streams read request units, as well as 25 write capacity unit
