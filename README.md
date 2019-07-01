@@ -53,9 +53,19 @@ DBaaS is generally a premium cloud offering and can get expensive quickly. Even 
 expensive than managing an on-premises database. The choice of cloud provider is important as egress charges tend
 to be prohibitive (MongoDB Atlas can use any of the major cloud providers).
 
+DBaaS is supposed to be a cost-effective way to handle bursty traffic where volumes are unknown. The classic
+example is getting a mention on SlashDot or HackerNoon that generates flash crowds - usually there is not enough
+capacity to handle the load and the servers fall over. Or to use a more recent success story, consider
+[Pokemon Go](https://www.techrepublic.com/article/pokemon-go-how-the-cloud-saved-the-smash-hit-game-from-collapse/)
+where initial traffic estimates were quickly exceeded by astronomical demand.
+
 #### Auto-scaling
 
 DynamoDB auto-scaling is relatively simple but probably does not extend across AWS regions.
+
+Auto-scaling is not an option if On-demand capacity is selected:
+
+![On-demand options](images/On-demand_Options.png)
 
 #### Global Tables
 
@@ -171,6 +181,20 @@ DynamoDB has sensible default values. These can be easily modified after the fac
 
 ![Capacity](images/Capacity.png)
 
+Note the following:
+
+> Select on-demand if you want to pay only for the read and writes you perform, with no capacity planning required.
+
+> Select provisioned to save on throughput costs if you can reliably estimate your application's throughput requirements.
+
+> You can update to on-demand mode at any time.
+
+[Switching to On-demand capacity can take 5 minutes or so.]
+
+Changes to On-demand capacity are limited:
+
+![On-demand changes limited](images/On-demand_changes_limited.png)
+
 #### Reserved Capacity
 
 Once production volumes have become established (after a few months running in production perhaps),
@@ -240,6 +264,8 @@ For online use, restrict access as follows:
 #### Web Identity Federation
 
 DynamoDB offers [Web Identity Federation](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WIF.html).
+
+[Current identity providers are Amazon, Facebook and Google.]
 
 ## Reference
 
