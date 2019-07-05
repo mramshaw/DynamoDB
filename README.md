@@ -13,6 +13,7 @@ The contents are as follows:
     * [DBaaS](#dbaas)
     * [Auto-scaling](#auto-scaling)
     * [Global Tables](#global-tables)
+    * [Eventually Consistent](#eventually-consistent)
     * [Advanced query capabilities](#advanced-query-capabilities)
     * [Ease of use](#ease-of-use)
 * [Alternatives](#alternatives)
@@ -22,6 +23,7 @@ The contents are as follows:
 * [Costs](#costs)
     * [Capacity](#capacity)
     * [Reserved Capacity](#reserved-capacity)
+* [DDL](#ddl)
 * [Offline use](#offline-use)
     * [Docker Tags](#docker-tags)
 * [Security](#security)
@@ -69,6 +71,12 @@ AWS offers [Global Tables](http://aws.amazon.com/dynamodb/global-tables/) for re
 
 [This is a premium service, and may well be overkill for most use cases.]
 
+#### Eventually Consistent
+
+Although NoSQL databases can offer transaction guarantees, most are geared more towards Eventual Consistency.
+
+So it is little surprise that DynamoDB is ___Eventually Consistent___.
+
 #### Advanced query capabilities
 
 To the extent that they are needed, Advanced query capabilities (text search, JSON parsing) are nice to have.
@@ -112,7 +120,7 @@ Wikipedia has a good (if slightly out-of-date) summary of the alternatives: http
 * Probably overkill for simple use cases
 * Probably not a good choice for greenfield applications
 * Apparently has the same price structure as MongoDB Atlas
-* Requires a VPC (additional costs & doesn't help with Lambda cold starts)
+* Requires a VPC (additional costs & doesn't help with Lambda cold starts, possibly leading to high tail-latencies)
 
 [Amazon Athena](http://aws.amazon.com/athena/)
 
@@ -185,11 +193,11 @@ Note the following:
 
 > You can update to on-demand mode at any time.
 
-[Switching to On-demand capacity can take 5 minutes or so.]
+[Switching to On-demand capacity can take 5 minutes or so. But switching back to Provisioned is nearly instantaneous.]
 
 ![On-demand capacity](images/On-demand_capacity.png)
 
-__Nota bene__:
+Nota bene:
 
 * Changes to On-demand capacity are limited
 * Auto-scaling is not an option if On-demand capacity is selected
@@ -205,6 +213,25 @@ cost savings.
 ![Reserved Capacity](images/Reserved_Capacity.png)
 
 [Costs can apparently be expected to continue to go down, so the one year option is the term to choose.]
+
+## DDL
+
+Rather annoyingly, there is no way to export DynamoDB configurations/definitions.
+
+Perhaps DDL (Data Definition Language) is not the correct term for this, as NoSQL databases are ___schema-less___,
+but for replicating (say perhaps in different regions or for [offline testing](#offline-use)) or re-creating
+a database (NoSQL or not) it is useful to have a backup copy of the database definition (if only to be
+able to check it inot a Git repo).
+
+This is a pretty minor complaint, as it takes five minutes or so to create a DynamoDB table,
+however it can get a little tedious setting up the same DynamoDB table in multiple regions so
+not having a backup or definitive copy of the table configuration is a bit of an issue.
+
+Probably the best option is to take a screenshot of the table overview once it has been defined:
+
+![DynamoDB Configuration](images/DynamoDB_config.png)
+
+[This should enable an easy re-creation of the table, if it ever got accidentally deleted or something.]
 
 ## Offline use
 
@@ -339,3 +366,4 @@ Local usage notes:
 - [ ] Investigate [Web Identity Federation](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WIF.html)
 - [ ] Investigate DynamoDB auto-scaling
 - [ ] Test DynamoDB [Global Tables](http://aws.amazon.com/dynamodb/global-tables/)
+- [ ] Investigate exporting DDL for DynamoDB alternatives
