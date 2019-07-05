@@ -221,7 +221,7 @@ Rather annoyingly, there is no way to export DynamoDB configurations/definitions
 Perhaps DDL (Data Definition Language) is not the correct term for this, as NoSQL databases are ___schema-less___,
 but for replicating (say perhaps in different regions or for [offline testing](#offline-use)) or re-creating
 a database (NoSQL or not) it is useful to have a backup copy of the database definition (if only to be
-able to check it inot a Git repo).
+able to check it into a Git repo).
 
 This is a pretty minor complaint, as it takes five minutes or so to create a DynamoDB table,
 however it can get a little tedious setting up the same DynamoDB table in multiple regions so
@@ -354,6 +354,7 @@ Local usage notes:
 - [ ] Investigate MongoDB Atlas free tier
 - [ ] Investigate DynamoDB data residency (in terms of regions)
 - [x] Investigate DynamoDB Capacity, Reserved Capacity, and Cost Calculator
+- [x] Investigate backing-up DynamoDB configuration
 - [ ] Test DynamoDB Accelerator (DAX)
 - [ ] Investigate [AWS Athena](http://aws.amazon.com/athena/)
 - [ ] Investigate [BigQuery](https://cloud.google.com/bigquery/) (Google Cloud alternative to AWS Athena)
