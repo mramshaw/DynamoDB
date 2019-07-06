@@ -94,13 +94,13 @@ Athena there is [BigQuery](https://cloud.google.com/bigquery/)).
 
 Consistent with usage and query requirements, it should as simple as possible to use and manage.
 
-[DocumentDB is simple to set up and administrate, although the IAM aspects can be tricky.]
+[DynamoDB is simple to set up and administrate, although the IAM aspects can be tricky.]
 
 ## Alternatives
 
 The following is a quick list of alternatives to DynamoDB.
 
-Some notes will be listed, otherwise how to evaluate DocumentDB against the alternatives?
+Some notes will be listed, otherwise how to evaluate DynamoDB against the alternatives?
 
 [It will be assumed that what is required is a JSON-friendly NoSQL DBaaS that can auto-scale.]
 
