@@ -60,7 +60,7 @@ to be prohibitive (MongoDB Atlas can use any of the major cloud providers).
 DBaaS is supposed to be a cost-effective way to handle bursty traffic where volumes are unknown. The classic
 example is getting a mention on SlashDot or HackerNoon that generates flash crowds - usually there is not enough
 capacity to handle the load and the servers fall over. Or to use a more recent success story, consider
-[Pokemon Go](https://www.techrepublic.com/article/pokemon-go-how-the-cloud-saved-the-smash-hit-game-from-collapse/)
+[Pokemon Go](http://www.techrepublic.com/article/pokemon-go-how-the-cloud-saved-the-smash-hit-game-from-collapse/)
 where initial traffic estimates were quickly exceeded by astronomical demand.
 
 #### Auto-scaling
@@ -89,8 +89,8 @@ There is no clear winner in terms of querying - MongoDB queries are not particul
 perhaps why they have [MongoDB Connector for BI](http://www.mongodb.com/products/bi-connector) - which
 allows for standard SQL queries. CouchBase has N1QL (which seems simple enough). And for another standard
 SQL option, there is [Amazon Athena](http://aws.amazon.com/athena/) - which may well be a very good choice
-for a [CQRS](https://en.wikipedia.org/wiki/CQRS)-type solution (for a Google Cloud alternative to Amazon
-Athena there is [BigQuery](https://cloud.google.com/bigquery/)).
+for a [CQRS](http://en.wikipedia.org/wiki/CQRS)-type solution (for a Google Cloud alternative to Amazon
+Athena there is [BigQuery](http://cloud.google.com/bigquery/)).
 
 #### Ease of use
 
@@ -146,6 +146,56 @@ Wikipedia has a good (if slightly out-of-date) summary of the alternatives: http
 * Seems to be playing catch-up with AWS and Azure (both of which have competing offerings)
 * Scaleable, both horizontally and vertically, but does not auto-scale
 * Apparently has the same price structure as AWS DocumentDB
+
+The following article offers a good overview of MongoDB cluster options:
+
+    http://docs.atlas.mongodb.com/create-new-cluster/
+
+Some quotes follow.
+
+> Electable nodes for high availability
+
+HA is nice.
+
+> Read-only nodes for optimal local reads
+
+They cannot take part in elections and cannot be used for replication, but possibly a nice option.
+
+> __Auto-Expand Storage__: Available on clusters of size M10 and larger. When disk usage reaches
+> 90%, automatically increase storage by an amount necessary to achieve 70% utilization. To enable
+> this feature, check the box marked __Auto-expand storage when disk usage reaches 90%__.
+>
+> Changes to storage capacity affect [cost](http://docs.atlas.mongodb.com/billing/#instance-size-costs).
+
+Functional auto-scale but only at the enterprise (M10 and larger, not free) level.
+
+> __IOPS__ (configurable for AWS only)
+
+The initial configuration is not cast in stone either; it's possible to modify just about everything
+after the fact (including scaling-up the cluster). For a list of what can be modified after the fact:
+
+    http://docs.atlas.mongodb.com/scale-cluster/
+
+This article largely restates the initial article, however some interesting quotes follow:
+
+> You can only modify the cloud provider backing your cluster
+> when you upgrade from an Atlas __M0__ Free Tier or __M2/M5__
+> Shared Tier cluster to a larger cluster.
+
+And:
+
+> You cannot modify the cloud provider of __M10__ or larger
+> dedicated clusters.
+
+[You can, however, create a new cluster and do a ___live migration___ to a different cloud provider
+ (possibly expensive, but probably still very useful). Expect to pay ___egress charges___.]
+
+And:
+
+> For dedicated clusters with an __Instance Size__ of __M10__ or larger,
+> you can modify cluster’s region.
+
+[These are all pretty attractive options.]
 
 [Azure Cosmos DB](http://azure.microsoft.com/en-us/services/cosmos-db/)
 
@@ -244,8 +294,9 @@ problem - which seems to be a common problem with DynamoDB:
 
     http://syslog.ravelin.com/you-probably-shouldnt-use-dynamodb-89143c1287ca
 
-There are work-arounds for hot keys (DAX might fix it) but the key takeaway should be that the
-ease and simplicity of using DynamoDB comes at a cost - that of visibility into DynamoDB internals.
+There are work-arounds for hot keys ([DAX](#dynamodb-accelerator) should fix this problem) but the key
+takeaway should be that the ease and simplicity of using DynamoDB comes at a cost - that of visibility
+into DynamoDB internals.
 
 ## Offline use
 
@@ -314,7 +365,7 @@ As always with the cloud, documentation is voluminous. Some useful links are lis
 #### Serverless
 
 For a quick (and largely provider-agnostic) summary of Serverless, the MongoDB Stitch
-[FAQ](https://www.mongodb.com/cloud/stitch/faq) provides this:
+[FAQ](http://www.mongodb.com/cloud/stitch/faq) provides this:
 
 > Stitch represents the next stage in the industry's migration to a more streamlined, managed infrastructure. Virtual
 > Machines running in public clouds (notably AWS EC2) led the way, followed by hosted containers, and serverless offerings
@@ -325,7 +376,7 @@ For a quick (and largely provider-agnostic) summary of Serverless, the MongoDB S
 > implement and manage access controls and REST APIs to provide access to microservices, public cloud services, and of
 > course data.
 
-[Sadly MongoDB Stitch seems to be javascript-only. Also "You pay for both data transfer and compute usage (memory x time)."
+[MongoDB Stitch seems to be javascript-only. Also "You pay for both data transfer and compute usage (memory x time)."
  although there is a free tier. It does seem to have good developer tooling.]
 
 #### Tracking Your Free Tier Usage
@@ -382,13 +433,14 @@ Local usage notes:
 ## To Do
 
 - [x] Investigate MongoDB DBaaS offering (Atlas)
-- [ ] Investigate MongoDB Atlas free tier
+- [x] Investigate MongoDB Atlas free tier
 - [ ] Investigate DynamoDB data residency (in terms of regions)
 - [x] Investigate DynamoDB Capacity, Reserved Capacity, and Cost Calculator
 - [x] Investigate backing-up DynamoDB configuration
 - [ ] Test DynamoDB Accelerator (DAX)
+- [ ] Investigate Google's offerings ([Cloud Firestore](http://cloud.google.com/firestore/) and [Cloud Bigtable](http://cloud.google.com/bigtable/))
 - [ ] Investigate [AWS Athena](http://aws.amazon.com/athena/)
-- [ ] Investigate [BigQuery](https://cloud.google.com/bigquery/) (Google Cloud alternative to AWS Athena)
+- [ ] Investigate [BigQuery](http://cloud.google.com/bigquery/) (Google Cloud alternative to AWS Athena)
 - [ ] Investigate DynamoDB offline use
 - [ ] Investigate [AWS Cost Explorer](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ce-enable.html)
 - [ ] Investigate AWS Budgets (budgeting, cost allocation tags, alerts, consolidated billing)
