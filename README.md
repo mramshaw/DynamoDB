@@ -144,7 +144,7 @@ Wikipedia has a good (if slightly out-of-date) summary of the alternatives: http
 * Offers [MongoDB Connector for BI](http://www.mongodb.com/products/bi-connector) which allows for standard SQL queries
 * Has a free tier (which offers a ___subset___ of Atlas features) which doesn't require a credit card
 * Seems to be playing catch-up with AWS and Azure (both of which have competing offerings)
-* Scaleable, both horizontally and vertically, but does not auto-scale
+* Scaleable, both horizontally and vertically
 * Apparently has the same price structure as AWS DocumentDB
 
 The following article offers a good overview of MongoDB cluster options:
@@ -155,11 +155,11 @@ Some quotes follow.
 
 > Electable nodes for high availability
 
-HA is nice.
+[HA is nice.]
 
 > Read-only nodes for optimal local reads
 
-They cannot take part in elections and cannot be used for replication, but possibly a nice option.
+[They cannot take part in elections and cannot be used for replication, but possibly a nice option.]
 
 > __Auto-Expand Storage__: Available on clusters of size M10 and larger. When disk usage reaches
 > 90%, automatically increase storage by an amount necessary to achieve 70% utilization. To enable
@@ -167,7 +167,7 @@ They cannot take part in elections and cannot be used for replication, but possi
 >
 > Changes to storage capacity affect [cost](http://docs.atlas.mongodb.com/billing/#instance-size-costs).
 
-Functional auto-scale but only at the enterprise (M10 and larger, not free) level.
+[Functional auto-scale but only at the enterprise (M10 and larger, not free) level.]
 
 > __IOPS__ (configurable for AWS only)
 
