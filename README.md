@@ -24,11 +24,13 @@ The contents are as follows:
     * [Capacity](#capacity)
     * [Reserved Capacity](#reserved-capacity)
 * [DDL](#ddl)
+* [Horror Stories](#horror-stories)
 * [Offline use](#offline-use)
     * [Docker Tags](#docker-tags)
 * [Security](#security)
     * [Web Identity Federation](#web-identity-federation)
 * [Reference](#reference)
+    * [Serverless](#serverless)
     * [Tracking Your Free Tier Usage](#tracking-your-free-tier-usage)
     * [DynamoDB Accelerator](#dynamodb-accelerator)
     * [AWS Billing and Cost Management](#aws-billing-and-cost-management)
@@ -140,7 +142,7 @@ Wikipedia has a good (if slightly out-of-date) summary of the alternatives: http
 * Offers the widest JSON support (including BSON)
 * Uses [JSON query syntax](http://docs.mongodb.com/manual/reference/operator/)
 * Offers [MongoDB Connector for BI](http://www.mongodb.com/products/bi-connector) which allows for standard SQL queries
-* Has a free tier which doesn't require a credit card
+* Has a free tier (which offers a ___subset___ of Atlas features) which doesn't require a credit card
 * Seems to be playing catch-up with AWS and Azure (both of which have competing offerings)
 * Scaleable, both horizontally and vertically, but does not auto-scale
 * Apparently has the same price structure as AWS DocumentDB
@@ -233,6 +235,18 @@ Probably the best option is to take a screenshot of the table overview once it h
 
 [This should enable an easy re-creation of the table, if it ever got accidentally deleted or something.]
 
+## Horror Stories
+
+It's pretty easy to find examples where a DynamoDB project failed. Lots of projects fail, for any
+number of reasons, so this is hardly surprising. However it's worth looking into these stories, if only
+to find examples of things to NOT do. The following article gives a good explanation of the ___hot key___
+problem - which seems to be a common problem with DynamoDB:
+
+    http://syslog.ravelin.com/you-probably-shouldnt-use-dynamodb-89143c1287ca
+
+There are work-arounds for hot keys (DAX might fix it) but the key takeaway should be that the
+ease and simplicity of using DynamoDB comes at a cost - that of visibility into DynamoDB internals.
+
 ## Offline use
 
 DynamoDB is available for [local use](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.html).
@@ -296,6 +310,23 @@ DynamoDB offers [Web Identity Federation](http://docs.aws.amazon.com/amazondynam
 ## Reference
 
 As always with the cloud, documentation is voluminous. Some useful links are listed below.
+
+#### Serverless
+
+For a quick (and largely provider-agnostic) summary of Serverless, the MongoDB Stitch
+[FAQ](https://www.mongodb.com/cloud/stitch/faq) provides this:
+
+> Stitch represents the next stage in the industry's migration to a more streamlined, managed infrastructure. Virtual
+> Machines running in public clouds (notably AWS EC2) led the way, followed by hosted containers, and serverless offerings
+> such as AWS Lambda and Google Cloud Functions. With serverless systems, you don't need to pre-provision computing
+> resources – you just send requests and rely on the provider to handle them.
+>
+> Existing serverless offerings (sometimes referred to as "Functions as a Service" still require backend developers to
+> implement and manage access controls and REST APIs to provide access to microservices, public cloud services, and of
+> course data.
+
+[Sadly MongoDB Stitch seems to be javascript-only. Also "You pay for both data transfer and compute usage (memory x time)."
+ although there is a free tier. It does seem to have good developer tooling.]
 
 #### Tracking Your Free Tier Usage
 
