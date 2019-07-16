@@ -13,6 +13,7 @@ The contents are as follows:
     * [DBaaS](#dbaas)
     * [Auto-scaling](#auto-scaling)
     * [Global Tables](#global-tables)
+    * [Indexes](#indexes)
     * [Eventually Consistent](#eventually-consistent)
     * [Advanced query capabilities](#advanced-query-capabilities)
     * [Ease of use](#ease-of-use)
@@ -32,6 +33,7 @@ The contents are as follows:
 * [Reference](#reference)
     * [Serverless](#serverless)
     * [Tracking Your Free Tier Usage](#tracking-your-free-tier-usage)
+    * [DynamoDB and Indexes](#dynamodb-and-indexes)
     * [DynamoDB Accelerator](#dynamodb-accelerator)
     * [AWS Billing and Cost Management](#aws-billing-and-cost-management)
     * [AWS Simple Monthly Calculator](#aws-simple-monthly-calculator)
@@ -73,11 +75,17 @@ AWS offers [Global Tables](http://aws.amazon.com/dynamodb/global-tables/) for re
 
 [This is a premium service, and may well be overkill for most use cases.]
 
+#### Indexes
+
+DynamoDB does not have a query optimizer. For some tips, refer to [DynamoDB and Indexes](#dynamodb-and-indexes).
+
 #### Eventually Consistent
 
 Although NoSQL databases can offer transaction guarantees, most are geared more towards Eventual Consistency.
 
 So it is little surprise that DynamoDB is ___Eventually Consistent___.
+
+[This is the default; Strong Consistency options are available (probably at a premium).]
 
 #### Advanced query capabilities
 
@@ -136,6 +144,7 @@ Wikipedia has a good (if slightly out-of-date) summary of the alternatives: http
 [MongoDB Atlas](http://docs.atlas.mongodb.com/getting-started/)
 
 * Offers a choice of cloud providers (AWS, Azure, GCP)
+* Has a query optimizer (indexes are preferred), can be overridden with [$hint](http://docs.mongodb.com/manual/tutorial/optimize-query-performance-with-indexes-and-projections/#use-hint-to-select-a-particular-index)
 * Widest choice of supported programming languages
 * A relatively old and mature offering, so offers good third-party tools
 * Seems to offer global clusters which pair well with [GCP's global VPCs](http://cloud.google.com/vpc/)
@@ -372,7 +381,7 @@ For a quick (and largely provider-agnostic) summary of Serverless, the MongoDB S
 > such as AWS Lambda and Google Cloud Functions. With serverless systems, you don't need to pre-provision computing
 > resources – you just send requests and rely on the provider to handle them.
 >
-> Existing serverless offerings (sometimes referred to as "Functions as a Service" still require backend developers to
+> Existing serverless offerings (sometimes referred to as "Functions as a Service") still require backend developers to
 > implement and manage access controls and REST APIs to provide access to microservices, public cloud services, and of
 > course data.
 
@@ -384,6 +393,14 @@ For a quick (and largely provider-agnostic) summary of Serverless, the MongoDB S
 Tracking Your Free Tier Usage:
 
     http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/tracking-free-tier-usage.html
+
+#### DynamoDB and Indexes
+
+Querying and Scanning an Index:
+
+    http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SQLtoNoSQL.Indexes.QueryAndScan.html
+
+[Shows how to specify an index, also how to use a __ProjectionExpression__ (basically, _subset_ the query results).]
 
 #### DynamoDB Accelerator
 
@@ -437,6 +454,7 @@ Local usage notes:
 - [ ] Investigate DynamoDB data residency (in terms of regions)
 - [x] Investigate DynamoDB Capacity, Reserved Capacity, and Cost Calculator
 - [x] Investigate backing-up DynamoDB configuration
+- [x] Investigate DynamoDB indexing
 - [ ] Test DynamoDB Accelerator (DAX)
 - [ ] Investigate Google's offerings ([Cloud Firestore](http://cloud.google.com/firestore/) and [Cloud Bigtable](http://cloud.google.com/bigtable/))
 - [ ] Investigate [AWS Athena](http://aws.amazon.com/athena/)
