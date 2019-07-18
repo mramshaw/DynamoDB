@@ -34,6 +34,7 @@ The contents are as follows:
     * [Serverless](#serverless)
     * [Tracking Your Free Tier Usage](#tracking-your-free-tier-usage)
     * [DynamoDB and Indexes](#dynamodb-and-indexes)
+    * [Modifying Data in a Table](#modifying-data-in-a-table)
     * [DynamoDB Accelerator](#dynamodb-accelerator)
     * [AWS Billing and Cost Management](#aws-billing-and-cost-management)
     * [AWS Simple Monthly Calculator](#aws-simple-monthly-calculator)
@@ -68,6 +69,14 @@ where initial traffic estimates were quickly exceeded by astronomical demand.
 #### Auto-scaling
 
 DynamoDB auto-scaling is relatively simple but probably does not extend across AWS regions.
+
+By default, auto-scaling is not enabled - but once auto-scaling is enabled, it becomes the default.
+
+It is simple to create an auto-scaling IAM role from the DynamoDB __Capacity__ tab.
+
+[This role cannot then be deleted until it is no longer referenced - in other words, all auto-scaling is disabled.]
+
+__TL;DR__ Don't enable auto-scaling until you actually need it; it will be in permanent ___Alarm___ state otherwise.
 
 #### Global Tables
 
@@ -402,6 +411,28 @@ Querying and Scanning an Index:
 
 [Shows how to specify an index, also how to use a __ProjectionExpression__ (basically, _subset_ the query results).]
 
+#### Modifying Data in a Table
+
+How to update a DynamoDB item:
+
+    http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SQLtoNoSQL.UpdateData.html
+
+[Also shows how to use ___atomic counters___.]
+
+ReturnValues:
+
+Use `ReturnValues` if you want to get the item attributes as they appear before or after they are updated. For `UpdateItem`, the valid values are:
+
+* `NONE` - If `ReturnValues` is not specified, or if its value is `NONE`, then nothing is returned. (This setting is the default for `ReturnValues`.)
+* `ALL_OLD` - Returns all of the attributes of the item, as they appeared before the UpdateItem operation.
+* `UPDATED_OLD` - Returns only the updated attributes, as they appeared before the UpdateItem operation.
+* `ALL_NEW` - Returns all of the attributes of the item, as they appear after the UpdateItem operation.
+* `UPDATED_NEW` - Returns only the updated attributes, as they appear after the UpdateItem operation.
+
+From:
+
+    http://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_UpdateItem.html
+
 #### DynamoDB Accelerator
 
 DAX as a drop-in accelerator for DynamoDB:
@@ -455,6 +486,7 @@ Local usage notes:
 - [x] Investigate DynamoDB Capacity, Reserved Capacity, and Cost Calculator
 - [x] Investigate backing-up DynamoDB configuration
 - [x] Investigate DynamoDB indexing
+- [x] Investigate DynamoDB DML (updateItem, etc)
 - [ ] Test DynamoDB Accelerator (DAX)
 - [ ] Investigate Google's offerings ([Cloud Firestore](http://cloud.google.com/firestore/) and [Cloud Bigtable](http://cloud.google.com/bigtable/))
 - [ ] Investigate [AWS Athena](http://aws.amazon.com/athena/)
@@ -466,6 +498,6 @@ Local usage notes:
 - [ ] Investigate AWS current IAM and RBAC
 - [ ] Verify if the access permissions shown above are still current
 - [ ] Investigate [Web Identity Federation](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WIF.html)
-- [ ] Investigate DynamoDB auto-scaling
+- [x] Investigate DynamoDB auto-scaling
 - [ ] Test DynamoDB [Global Tables](http://aws.amazon.com/dynamodb/global-tables/)
 - [ ] Investigate exporting DDL for DynamoDB alternatives
