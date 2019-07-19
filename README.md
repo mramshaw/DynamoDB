@@ -370,6 +370,44 @@ For online use, restrict access as follows:
 	  ]
 	}
 
+The example above is fine for [Alexa skills](http://github.com/mramshaw/Alexa-Stuff/tree/master/DynamoDB#permissions)
+but for a CRUD something like the following is more appropriate:
+
+	{
+	  "Version": "2012-10-17",
+	  "Statement": [
+	    {
+	      "Effect": "Allow",
+          "Action": [
+            "dynamodb:DeleteItem",
+            "dynamodb:GetItem",
+            "dynamodb:PutItem",
+            "dynamodb:Scan",
+            "dynamodb:UpdateItem"
+          ],
+	      "Resource":["arn:aws:dynamodb:us-east-1:xxxxxxxxxxxx:table/YourTableName"],
+	    }
+	  ]
+	}
+
+You may wish to include `dynamodb:Query` in your access list - or even have `dynamodb:Query` only:
+
+	{
+	  "Version": "2012-10-17",
+	  "Statement": [
+	    {
+	      "Effect": "Allow",
+	      "Action": [
+            "dynamodb:Query"
+	      ],
+	      "Resource":["arn:aws:dynamodb:us-east-1:xxxxxxxxxxxx:table/YourTableName"],
+	    }
+	  ]
+	}
+
+__TL;DR__ Use an inline policy for DynamoDB unless you are anticipating reuse. Likewise, restrict DynamoDB access
+to the needed table or tables - it's not just a ___best practice___, it will probably help with GDPR compliance.
+
 #### Web Identity Federation
 
 DynamoDB offers [Web Identity Federation](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WIF.html).
@@ -495,7 +533,7 @@ Local usage notes:
 - [ ] Investigate [AWS Cost Explorer](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ce-enable.html)
 - [ ] Investigate AWS Budgets (budgeting, cost allocation tags, alerts, consolidated billing)
 - [ ] Investigate AWS billing alerts
-- [ ] Investigate AWS current IAM and RBAC
+- [x] Investigate AWS current IAM and RBAC
 - [ ] Verify if the access permissions shown above are still current
 - [ ] Investigate [Web Identity Federation](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WIF.html)
 - [x] Investigate DynamoDB auto-scaling
