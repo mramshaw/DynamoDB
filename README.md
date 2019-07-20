@@ -34,6 +34,7 @@ The contents are as follows:
     * [Serverless](#serverless)
     * [Tracking Your Free Tier Usage](#tracking-your-free-tier-usage)
     * [DynamoDB and Indexes](#dynamodb-and-indexes)
+    * [DynamoDB and "document not found"](#dynamodb-and-document-not-found)
     * [Modifying Data in a Table](#modifying-data-in-a-table)
     * [DynamoDB Accelerator](#dynamodb-accelerator)
     * [AWS Billing and Cost Management](#aws-billing-and-cost-management)
@@ -449,6 +450,19 @@ Querying and Scanning an Index:
 
 [Shows how to specify an index, also how to use a __ProjectionExpression__ (basically, _subset_ the query results).]
 
+#### DynamoDB and "document not found"
+
+Some databases will return an error if the document being modified or deleted does not exist.
+
+Likewise if the document being created already exists.
+
+Not so DynamoDB.
+
+A case in point: `putItem` - this functions as an ___upsert___ - meaning it will update the document in question
+if it exists or it will create it if it does not yet exist. This may be _helpful_ but it is not _RESTful_.
+
+__TL;DR__ It is necessary to check for the presence (or absence) of the document in question in DynamoDB to avoid surprises.
+
 #### Modifying Data in a Table
 
 How to update a DynamoDB item:
@@ -466,6 +480,8 @@ Use `ReturnValues` if you want to get the item attributes as they appear before 
 * `UPDATED_OLD` - Returns only the updated attributes, as they appeared before the UpdateItem operation.
 * `ALL_NEW` - Returns all of the attributes of the item, as they appear after the UpdateItem operation.
 * `UPDATED_NEW` - Returns only the updated attributes, as they appear after the UpdateItem operation.
+
+[Note that unchanged values will be considered to be UPDATED if they were specified in the `UpdateExpression`.]
 
 From:
 
@@ -534,7 +550,7 @@ Local usage notes:
 - [ ] Investigate AWS Budgets (budgeting, cost allocation tags, alerts, consolidated billing)
 - [ ] Investigate AWS billing alerts
 - [x] Investigate AWS current IAM and RBAC
-- [ ] Verify if the access permissions shown above are still current
+- [x] Verify if the access permissions shown above are still current (yes, as of July 2019)
 - [ ] Investigate [Web Identity Federation](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WIF.html)
 - [x] Investigate DynamoDB auto-scaling
 - [ ] Test DynamoDB [Global Tables](http://aws.amazon.com/dynamodb/global-tables/)
