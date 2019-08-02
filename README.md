@@ -351,7 +351,7 @@ $ docker run -p 8000:8000 amazon/dynamodb-local:tag
 
 ## Security
 
-My approach to security involves the principle of ___Least Privilege___.
+My approach to security involves the [Principle of least privilege](http://en.wikipedia.org/wiki/Principle_of_least_privilege).
 
 Accordingly, it's better to allocate 'YourTableName' manually rather than give Create permission.
 
